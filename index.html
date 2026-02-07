@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ffffff, #008000);
+            background-size: 100% 100%;
+            animation: backgroundAnimation 5s ease-in-out forwards;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Eid Mubarak Animation */
+        #eidMessage {
+            font-size: 1.2em;
+            color: black;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: fadeInScale 5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Next Button */
+        #nextButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: gold;
+            border: none;
+            cursor: pointer;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        /* Fade in effect */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Salami Question Section */
+        #salamiSection {
+            display: none;
+            text-align: center;
+        }
+
+        #salamiQuestion {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: lightblue;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hureee Page */
+        #hureeeMessage {
+            display: none;
+            font-size: 2em;
+            color: red;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="eidMessage">🎉 Eid Mubarak! 🎉<br><br>
+        Dear family, on this special occasion, I want to wish you all a joyful and blessed Eid. 
+        May this day bring endless happiness, love, and prosperity into our lives. 
+        Let’s cherish the beautiful moments together, enjoy the delicious food, and create memories that last a lifetime.<br><br>
+        <strong>Eid Mubarak from Mohammad Ehtesam Uddin Ahmed and his family.</strong><br>
+        Wishing you all a happy Eid and a prosperous future. 
+        May Allah bless us with good health, success, and countless reasons to smile.<br><br>
+        Enjoy the celebrations, stay blessed, and keep spreading love and kindness. <br><br>
+        <strong>Eid Mubarak! ❤️</strong>
+    </h1>
+
+    <button id="nextButton" onclick="showSalamiQuestion()">Next</button>
+
+    <div id="salamiSection">
+        <h2 id="salamiQuestion">Where's my Salami?? 🤨</h2>
+        <button class="option" id="sendingButton" onclick="showHureee()">Sending ✅</button>
+        <button class="option" id="diboNaButton" onclick="increaseSending()">Dibo Na ❌</button>
+    </div>
+
+    <h1 id="hureeeMessage">🎉 Hureee! 🎉</h1>
+
+    <script>
+        // Show "Next" button after Eid Mubarak animation
+        setTimeout(() => {
+            document.getElementById("nextButton").style.display = "block";
+        }, 5000);
+
+        function showSalamiQuestion() {
+            document.getElementById("eidMessage").style.display = "none";
+            document.getElementById("nextButton").style.display = "none";
+            document.getElementById("salamiSection").style.display = "block";
+        }
+
+        function showHureee() {
+            document.getElementById("salamiSection").style.display = "none";
+            document.getElementById("hureeeMessage").style.display = "block";
+        }
+
+        function increaseSending() {
+            let sendingButton = document.getElementById("sendingButton");
+            let diboNaButton = document.getElementById("diboNaButton");
+
+            let currentSize = parseFloat(window.getComputedStyle(sendingButton).fontSize);
+            sendingButton.style.fontSize = (currentSize * 1.2) + "px";
+
+            // Move Dibo Na button to the side
+            diboNaButton.style.transform = "translateX(20px)";
+        }
+    </script>
+</body>
+</html>
